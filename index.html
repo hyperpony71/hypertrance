@@ -3,84 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HYPERTRANCE - Authentic Y2K 3D beat-reactive visuals inspired by Newgrounds hypertrance tracks. Neon tunnels, spinning toruses, cyber particles & maximum 2000s energy.">
-    <meta name="keywords" content="hypertrance, y2k visuals, newgrounds visualizer, beat reactive, trance 3d animation, metalheart, depthcore, cyber y2k">
-    <title>HYPERTRANCE | Reactive Y2K Visualizer</title>
+    <meta name="description" content="HYPERTRANCE - Authentic Y2K 3D beat-reactive visuals inspired by Newgrounds. Neon ribbons, white void, spinning energy & maximum 2000s hypertrance rush.">
+    <meta name="keywords" content="hypertrance, y2k visuals, newgrounds, beat reactive, neon ribbons, white background visualizer">
+    <title>HYPERTRANCE - Reactive Y2K Visualizer</title>
     
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background: #000;
-            font-family: 'Courier New', monospace;
-            color: #ff00ff;
-        }
-        canvas { display: block; }
+        body { margin:0; overflow:hidden; background:#fff; font-family:'Courier New',monospace; color:#ff00ff; }
+        canvas { display:block; }
         
         #overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-            box-sizing: border-box;
-            z-index: 100;
-            text-shadow: 0 0 15px #ff00ff;
+            position:absolute; top:0; left:0; right:0; bottom:0;
+            pointer-events:none; display:flex; flex-direction:column;
+            justify-content:space-between; padding:20px; box-sizing:border-box; z-index:100;
+            text-shadow: 0 0 12px #ff00ff, 0 0 25px #00ffff;
         }
         .title {
-            font-size: 4.8rem;
-            font-weight: bold;
-            text-align: center;
-            letter-spacing: 12px;
-            animation: glitch 0.8s infinite;
-            text-transform: uppercase;
+            font-size:5rem; font-weight:bold; text-align:center; letter-spacing:14px;
+            animation:glitch 0.7s infinite; text-transform:uppercase; color:#000;
         }
-        .subtitle {
-            font-size: 1.6rem;
-            text-align: center;
-            opacity: 0.9;
-            letter-spacing: 8px;
-        }
+        .subtitle { font-size:1.65rem; text-align:center; letter-spacing:9px; color:#000; opacity:0.85; }
         
         #controls {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            pointer-events: all;
-            z-index: 200;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            position:absolute; top:20px; left:20px; pointer-events:all; z-index:200;
+            display:flex; gap:8px; flex-wrap:wrap;
         }
         button, input {
-            background: rgba(0,0,0,0.8);
-            color: #00ffff;
-            border: 2px solid #ff00ff;
-            padding: 10px 18px;
-            font-family: inherit;
-            cursor: pointer;
+            background:rgba(255,255,255,0.9); color:#000; border:2px solid #ff00ff;
+            padding:10px 18px; font-family:inherit; cursor:pointer;
         }
-        button:hover { background: #ff00ff; color: #000; }
-        button.recording { background: #ff0044; color: white; animation: pulse 1s infinite; }
+        button:hover { background:#ff00ff; color:#fff; }
+        button.recording { background:#ff0044; color:white; animation:pulse 1s infinite; }
 
         .credits {
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-            font-size: 0.9rem;
-            opacity: 0.75;
-            pointer-events: all;
-            z-index: 200;
+            position:absolute; bottom:25px; right:25px; font-size:0.9rem;
+            opacity:0.8; pointer-events:all; z-index:200; color:#000;
         }
 
         @keyframes glitch {
-            0%,100% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(3px, -3px); }
+            0%,100% { transform:translate(0); }
+            20% { transform:translate(-4px,3px); }
+            40% { transform:translate(4px,-3px); }
         }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
     </style>
 </head>
 <body>
@@ -94,106 +58,136 @@
 <div id="overlay">
     <div>
         <div class="title">HYPERTRANCE</div>
-        <div class="subtitle">ENERGY • SCI-FI • 2004</div>
+        <div class="subtitle">TRANCE MUSIC • Y2K • 2004 VIBES</div>
     </div>
 </div>
 
 <div class="credits">
     visuals by <strong>hyperpony</strong><br>
-    <a href="https://youtube.com/@hyperpony71" target="_blank" style="color:#00ffff;">youtube.com/@hyperpony71</a>
+    <a href="https://youtube.com/@hyperpony71" target="_blank" style="color:#ff00ff;">youtube.com/@hyperpony71</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <script>
-// ============== HYPERTRANCE AUTHENTIC SETUP ==============
+// ============== WHITE BACKGROUND HYPERTRANCE RIBBONS ==============
 const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x000033, 30, 180);
+scene.background = new THREE.Color(0xffffff);
+scene.fog = new THREE.Fog(0xffffff, 40, 220);
 
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 300);
-camera.position.set(0, 12, 45);
+const camera = new THREE.PerspectiveCamera(72, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(0, 15, 55);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-// Intense neon lighting
-scene.add(new THREE.AmbientLight(0x220044, 0.6));
-
-const neonPink = new THREE.PointLight(0xff00ff, 4, 200);
-const neonCyan = new THREE.PointLight(0x00ffff, 4, 200);
-const neonYellow = new THREE.PointLight(0xffff00, 2.5, 150);
+// Lighting for white bg
+scene.add(new THREE.AmbientLight(0xaaaaaa, 0.9));
+const neonPink = new THREE.PointLight(0xff0088, 6, 300);
+const neonCyan = new THREE.PointLight(0x00ffff, 6, 300);
+const neonYellow = new THREE.PointLight(0xffee00, 5, 250);
 scene.add(neonPink, neonCyan, neonYellow);
 
-// Faster grid tunnel
-const grid = new THREE.GridHelper(120, 60, 0x00ffff, 0xff00ff);
+// Grid (subtle on white)
+const grid = new THREE.GridHelper(140, 70, 0x00ffff, 0xff00ff);
 grid.rotation.x = Math.PI / 2;
-grid.material.opacity = 0.5;
+grid.material.opacity = 0.25;
 grid.material.transparent = true;
 scene.add(grid);
 
-// Multiple spinning toruses for classic hypertrance look
-const knots = [];
-const knotGeo = new THREE.TorusKnotGeometry(7, 2.2, 120, 24, 3, 8);
+// ============== RIBBON-LIKE OBJECTS ==============
+const ribbons = [];
 
-for (let i = 0; i < 3; i++) {
-    const mat = new THREE.MeshPhongMaterial({
-        color: i === 0 ? 0x00ffff : i === 1 ? 0xff00ff : 0xffff00,
-        emissive: i === 0 ? 0x0088ff : i === 1 ? 0xff0088 : 0xff8800,
-        shininess: 120,
-        specular: 0xffffff
-    });
-    const knot = new THREE.Mesh(knotGeo, mat);
-    knot.position.y = (i - 1) * 12;
-    scene.add(knot);
-    knots.push(knot);
+function createRibbon() {
+    // Helical curve for ribbon feel
+    const points = [];
+    for (let i = 0; i < 80; i++) {
+        const t = i / 8;
+        points.push(new THREE.Vector3(
+            Math.sin(t) * 14,
+            t * 3.5 - 35,
+            Math.cos(t) * 14
+        ));
+    }
+    const curve = new THREE.CatmullRomCurve3(points);
     
-    // Wireframe overlay
-    const wire = new THREE.Mesh(knotGeo, new THREE.MeshBasicMaterial({
-        color: 0xffffff, wireframe: true, transparent: true, opacity: 0.25
-    }));
-    wire.position.y = (i - 1) * 12;
-    scene.add(wire);
-    knots.push(wire);
+    const geometry = new THREE.TubeGeometry(curve, 120, 1.8, 8, false);
+    const material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        emissive: Math.random() > 0.5 ? 0xff00aa : 0x00ddff,
+        shininess: 100,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.95
+    });
+    
+    const ribbon = new THREE.Mesh(geometry, material);
+    ribbon.userData = { speed: 0.8 + Math.random() * 1.2 };
+    scene.add(ribbon);
+    return ribbon;
 }
 
-// Particle tunnel - more dense & colorful
-const particleCount = 4500;
+// Create multiple ribbons
+for (let i = 0; i < 5; i++) {
+    const ribbon = createRibbon();
+    ribbon.rotation.y = (i * Math.PI * 2) / 5;
+    ribbon.position.y = (i % 2 === 0) ? 8 : -12;
+    ribbons.push(ribbon);
+}
+
+// Extra flat spinning ribbons
+for (let i = 0; i < 3; i++) {
+    const torus = new THREE.Mesh(
+        new THREE.TorusGeometry(22, 1.2, 6, 120),
+        new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+            emissive: i === 0 ? 0xff00ff : 0x00ffff,
+            shininess: 90,
+            side: THREE.DoubleSide
+        })
+    );
+    torus.rotation.x = Math.PI / 2 + (i * 0.4);
+    torus.position.y = i * 6 - 8;
+    ribbons.push(torus);
+    scene.add(torus);
+}
+
+// Dense particle tunnel
+const particleCount = 5200;
 const positions = new Float32Array(particleCount * 3);
 const colors = new Float32Array(particleCount * 3);
 
 for(let i = 0; i < particleCount * 3; i += 3) {
-    const radius = 55 + Math.random() * 95;
+    const r = 48 + Math.random() * 110;
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(2 * Math.random() - 1);
     
-    positions[i]     = radius * Math.sin(phi) * Math.cos(theta);
-    positions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
-    positions[i + 2] = radius * Math.cos(phi);
+    positions[i]     = r * Math.sin(phi) * Math.cos(theta);
+    positions[i + 1] = r * Math.sin(phi) * Math.sin(theta);
+    positions[i + 2] = r * Math.cos(phi);
     
-    // Strong hypertrance colors
-    const hue = Math.random();
-    colors[i]     = hue < 0.4 ? 1 : 0.1;
-    colors[i + 1] = hue > 0.6 ? 1 : 0.2;
-    colors[i + 2] = 0.9 + Math.random() * 0.1;
+    colors[i]   = 0.1 + Math.random() * 0.9;
+    colors[i+1] = 0.2;
+    colors[i+2] = 0.95;
 }
 
-const particlesGeo = new THREE.BufferGeometry();
-particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-const particles = new THREE.Points(particlesGeo, new THREE.PointsMaterial({
-    size: 1.6,
-    vertexColors: true,
-    transparent: true,
-    opacity: 0.95,
-    blending: THREE.AdditiveBlending,
-    depthTest: false
-}));
+const particles = new THREE.Points(
+    new THREE.BufferGeometry()
+        .setAttribute('position', new THREE.BufferAttribute(positions, 3))
+        .setAttribute('color', new THREE.BufferAttribute(colors, 3)),
+    new THREE.PointsMaterial({
+        size: 2.2,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending
+    })
+);
 scene.add(particles);
 
-// ============== AUDIO REACTIVITY ==============
+// ============== AUDIO + CONTROLS ==============
 let audioContext, analyser, audioElement, frequencyData = new Uint8Array(128), bassLevel = 0;
 
 const audioFileInput = document.getElementById('audioFile');
@@ -225,10 +219,10 @@ playBtn.addEventListener('click', () => {
     if (audioElement) audioElement.paused ? audioElement.play() : audioElement.pause();
 });
 
-// Recording (same as before)
+// Recording
 let mediaRecorder, recordedChunks = [], isRecording = false;
 recordBtn.addEventListener('click', async () => {
-    if (!audioElement) { alert("Upload a hypertrance track first!"); return; }
+    if (!audioElement) { alert("Upload track first!"); return; }
     
     if (!isRecording) {
         const stream = renderer.domElement.captureStream(60);
@@ -240,7 +234,7 @@ recordBtn.addEventListener('click', async () => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'hypertrance-neon-rush.mp4';
+            a.download = 'hypertrance-white-ribbons.mp4';
             a.click();
         };
         mediaRecorder.start();
@@ -255,59 +249,59 @@ recordBtn.addEventListener('click', async () => {
     }
 });
 
-// ============== ANIMATION - FAST & HYPER ==============
+// ============== ANIMATION ==============
 let time = 0;
 
 function animate() {
     requestAnimationFrame(animate);
-    time += 0.022; // faster base speed
+    time += 0.018;
 
     if (analyser) {
         analyser.getByteFrequencyData(frequencyData);
         let bass = 0;
-        for (let i = 0; i < 14; i++) bass += frequencyData[i];
-        bassLevel = Math.min(bass / (14 * 255), 1);
+        for (let i = 0; i < 16; i++) bass += frequencyData[i];
+        bassLevel = Math.min(bass / (16 * 255), 1);
     }
 
-    const pulse = 1 + bassLevel * 2.2;
+    const pulse = 1 + bassLevel * 2.4;
 
-    // Multiple knots spinning at different speeds
-    knots.forEach((obj, i) => {
-        obj.rotation.x = time * (0.6 + i * 0.2) + bassLevel * 3;
-        obj.rotation.y = time * (0.45 - i * 0.1);
-        if (i % 2 === 0) obj.scale.setScalar(pulse * (1 + Math.sin(time * 12) * 0.1));
+    // Animate ribbons
+    ribbons.forEach((ribbon, i) => {
+        if (ribbon.geometry.type === "TubeGeometry") {
+            ribbon.rotation.y += 0.008 * ribbon.userData.speed + bassLevel * 0.04;
+            ribbon.scale.setScalar(1 + Math.sin(time * 6 + i) * 0.08);
+        } else {
+            ribbon.rotation.z = time * (0.4 + i * 0.2) + bassLevel * 2;
+            ribbon.scale.setScalar(pulse * 0.9);
+        }
     });
 
-    // Hyper particle tunnel
+    // Particle rush
     const pos = particles.geometry.attributes.position.array;
     for (let i = 1; i < pos.length; i += 3) {
-        pos[i] -= 3.8 + bassLevel * 9; // very fast forward rush
-        if (pos[i] < -140) pos[i] = 140;
+        pos[i] -= 4.2 + bassLevel * 11;
+        if (pos[i] < -160) pos[i] = 160;
     }
     particles.geometry.attributes.position.needsUpdate = true;
-    particles.rotation.y = time * 0.12;
+    particles.rotation.y = time * 0.15;
 
-    // Aggressive lighting
-    neonPink.intensity = 4 + bassLevel * 18;
-    neonCyan.intensity = 4 + bassLevel * 15;
-    neonYellow.intensity = 2.5 + bassLevel * 12;
-    
-    neonPink.position.x = Math.sin(time * 4) * 20;
-    neonCyan.position.x = Math.cos(time * 3.5) * 20;
+    // Light reaction
+    neonPink.intensity = 6 + bassLevel * 22;
+    neonCyan.intensity = 6 + bassLevel * 19;
+    neonYellow.intensity = 5 + bassLevel * 16;
 
     renderer.render(scene, camera);
 }
 
 animate();
 
-// Resize
+// Resize + Fullscreen
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// Fullscreen on click (non-controls)
 document.addEventListener('click', (e) => {
     if (!['BUTTON','INPUT'].includes(e.target.tagName)) {
         if (!document.fullscreenElement) document.documentElement.requestFullscreen();
