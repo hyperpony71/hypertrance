@@ -3,26 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Experience HYPERTRANCE - Immersive 3D Y2K visuals with real-time beat-reactive animation. Perfect for hard trance, hypertrance, and 2000s electronic music.">
-    <meta name="keywords" content="hypertrance, y2k visuals, 3d music visualizer, beat reactive, trance visuals, 2000s aesthetic, webgl animation, electronic music visualizer">
-    <meta name="author" content="hyperpony">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="HYPERTRANCE - 3D Beat Reactive Y2K Visualizer">
-    <meta property="og:description" content="Stunning real-time 3D visuals for hypertrance and hard trance music. Torus knots, neon particles, and bass-reactive effects.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.com/hyperpony71/hypertrance">
-    <meta property="og:image" content="https://github.com/hyperpony71/hypertrance/hypertrance-preview.jpg">
-    <meta property="og:site_name" content="Hypertrance Visualizer">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HYPERTRANCE - 3D Y2K Visualizer">
-    <meta name="twitter:description" content="Real-time beat reactive 3D visuals for trance music">
-    <meta name="twitter:image" content="https://github.com/hyperpony71/hypertrance/hypertrance-preview.jpg">
-
-    <title>HYPERTRANCE | 3D Beat Reactive Y2K Visualizer</title>
+    <meta name="description" content="HYPERTRANCE - Authentic Y2K 3D beat-reactive visuals inspired by Newgrounds hypertrance tracks. Neon tunnels, spinning toruses, cyber particles & maximum 2000s energy.">
+    <meta name="keywords" content="hypertrance, y2k visuals, newgrounds visualizer, beat reactive, trance 3d animation, metalheart, depthcore, cyber y2k">
+    <title>HYPERTRANCE | Reactive Y2K Visualizer</title>
     
     <style>
         body {
@@ -41,19 +24,25 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 30px;
+            padding: 20px;
             box-sizing: border-box;
             z-index: 100;
+            text-shadow: 0 0 15px #ff00ff;
         }
         .title {
-            font-size: 4.5rem;
+            font-size: 4.8rem;
             font-weight: bold;
             text-align: center;
-            text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ffff00;
-            letter-spacing: 8px;
-            animation: glitch 1.5s infinite;
+            letter-spacing: 12px;
+            animation: glitch 0.8s infinite;
+            text-transform: uppercase;
         }
-        .subtitle { font-size: 1.4rem; text-align: center; opacity: 0.8; letter-spacing: 6px; }
+        .subtitle {
+            font-size: 1.6rem;
+            text-align: center;
+            opacity: 0.9;
+            letter-spacing: 8px;
+        }
         
         #controls {
             position: absolute;
@@ -66,244 +55,264 @@
             flex-wrap: wrap;
         }
         button, input {
-            background: rgba(0,0,0,0.75);
+            background: rgba(0,0,0,0.8);
             color: #00ffff;
             border: 2px solid #ff00ff;
-            padding: 10px 16px;
+            padding: 10px 18px;
             font-family: inherit;
             cursor: pointer;
-            font-size: 0.95rem;
         }
         button:hover { background: #ff00ff; color: #000; }
         button.recording { background: #ff0044; color: white; animation: pulse 1s infinite; }
 
         .credits {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 0.95rem;
-            opacity: 0.7;
+            bottom: 25px;
+            right: 25px;
+            font-size: 0.9rem;
+            opacity: 0.75;
             pointer-events: all;
             z-index: 200;
-            text-align: right;
-        }
-
-        .description {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 600px;
-            text-align: center;
-            font-size: 1rem;
-            opacity: 0.75;
-            pointer-events: none;
-            line-height: 1.5;
         }
 
         @keyframes glitch {
-            0%,100% { text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff; }
-            20% { text-shadow: 3px 0 20px #ff00ff, -3px 0 40px #00ffff; }
-            40% { text-shadow: -3px 0 20px #ff00ff, 3px 0 40px #ffff00; }
+            0%,100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(3px, -3px); }
         }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
 
-    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;">Hypertrance 3D Beat Reactive Visualizer</h1>
-    
-    <div id="controls">
-        <input type="file" id="audioFile" accept="audio/*">
-        <button id="playBtn">▶ Play / Pause</button>
-        <button id="recordBtn">RECORD MP4</button>
+<div id="controls">
+    <input type="file" id="audioFile" accept="audio/*">
+    <button id="playBtn">▶ PLAY / PAUSE</button>
+    <button id="recordBtn">RECORD MP4</button>
+</div>
+
+<div id="overlay">
+    <div>
+        <div class="title">HYPERTRANCE</div>
+        <div class="subtitle">ENERGY • SCI-FI • 2004</div>
     </div>
+</div>
 
-    <div id="overlay">
-        <div>
-            <div class="title">HYPERTRANCE</div>
-            <div class="subtitle">Y2K • BASS ACTIVATED • 2001 ENERGY</div>
-        </div>
-    </div>
+<div class="credits">
+    visuals by <strong>hyperpony</strong><br>
+    <a href="https://youtube.com/@hyperpony71" target="_blank" style="color:#00ffff;">youtube.com/@hyperpony71</a>
+</div>
 
-    <div class="description">
-        Immersive 3D music visualizer with real-time beat detection, pulsing torus knots, 
-        neon particle tunnels and classic Y2K aesthetics. Perfect for hypertrance, hard trance and electronic music.
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
-    <div class="credits">
-        visuals by <strong>hyperpony</strong><br>
-        <a href="https://youtube.com/@hyperpony71" target="_blank" style="color:#00ffff;">youtube.com/@hyperpony71</a>
-    </div>
+<script>
+// ============== HYPERTRANCE AUTHENTIC SETUP ==============
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x000033, 30, 180);
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 300);
+camera.position.set(0, 12, 45);
 
-    <script>
-    // ============== THREE.JS SETUP (unchanged core) ==============
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-    camera.position.set(0, 10, 40);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+document.body.appendChild(renderer.domElement);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    document.body.appendChild(renderer.domElement);
+// Intense neon lighting
+scene.add(new THREE.AmbientLight(0x220044, 0.6));
 
-    // Lights
-    scene.add(new THREE.AmbientLight(0x4400ff, 0.4));
-    const pointLight = new THREE.PointLight(0xff00ff, 3, 100);
-    const pointLight2 = new THREE.PointLight(0x00ffff, 3, 100);
-    scene.add(pointLight, pointLight2);
+const neonPink = new THREE.PointLight(0xff00ff, 4, 200);
+const neonCyan = new THREE.PointLight(0x00ffff, 4, 200);
+const neonYellow = new THREE.PointLight(0xffff00, 2.5, 150);
+scene.add(neonPink, neonCyan, neonYellow);
 
-    // Grid, Knot, Particles (same as previous version)
-    const grid = new THREE.GridHelper(70, 50, 0x00ffff, 0xff00ff);
-    grid.rotation.x = Math.PI / 2;
-    grid.material.opacity = 0.35;
-    grid.material.transparent = true;
-    scene.add(grid);
+// Faster grid tunnel
+const grid = new THREE.GridHelper(120, 60, 0x00ffff, 0xff00ff);
+grid.rotation.x = Math.PI / 2;
+grid.material.opacity = 0.5;
+grid.material.transparent = true;
+scene.add(grid);
 
-    const knot = new THREE.Mesh(
-        new THREE.TorusKnotGeometry(8, 2.8, 160, 32, 3, 7),
-        new THREE.MeshPhongMaterial({ color: 0x00ffff, emissive: 0xff00ff, shininess: 100 })
-    );
+// Multiple spinning toruses for classic hypertrance look
+const knots = [];
+const knotGeo = new THREE.TorusKnotGeometry(7, 2.2, 120, 24, 3, 8);
+
+for (let i = 0; i < 3; i++) {
+    const mat = new THREE.MeshPhongMaterial({
+        color: i === 0 ? 0x00ffff : i === 1 ? 0xff00ff : 0xffff00,
+        emissive: i === 0 ? 0x0088ff : i === 1 ? 0xff0088 : 0xff8800,
+        shininess: 120,
+        specular: 0xffffff
+    });
+    const knot = new THREE.Mesh(knotGeo, mat);
+    knot.position.y = (i - 1) * 12;
     scene.add(knot);
+    knots.push(knot);
+    
+    // Wireframe overlay
+    const wire = new THREE.Mesh(knotGeo, new THREE.MeshBasicMaterial({
+        color: 0xffffff, wireframe: true, transparent: true, opacity: 0.25
+    }));
+    wire.position.y = (i - 1) * 12;
+    scene.add(wire);
+    knots.push(wire);
+}
 
-    const wireKnot = new THREE.Mesh(knot.geometry, 
-        new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.2 })
-    );
-    scene.add(wireKnot);
+// Particle tunnel - more dense & colorful
+const particleCount = 4500;
+const positions = new Float32Array(particleCount * 3);
+const colors = new Float32Array(particleCount * 3);
 
-    // Particles (same)
-    const particleCount = 3000;
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    for(let i = 0; i < particleCount * 3; i += 3) {
-        const r = 70 + Math.random() * 80;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
-        positions[i]     = r * Math.sin(phi) * Math.cos(theta);
-        positions[i + 1] = r * Math.sin(phi) * Math.sin(theta);
-        positions[i + 2] = r * Math.cos(phi);
-        colors[i] = 0.9; colors[i+1] = 0.2; colors[i+2] = 1.0;
+for(let i = 0; i < particleCount * 3; i += 3) {
+    const radius = 55 + Math.random() * 95;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    
+    positions[i]     = radius * Math.sin(phi) * Math.cos(theta);
+    positions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+    positions[i + 2] = radius * Math.cos(phi);
+    
+    // Strong hypertrance colors
+    const hue = Math.random();
+    colors[i]     = hue < 0.4 ? 1 : 0.1;
+    colors[i + 1] = hue > 0.6 ? 1 : 0.2;
+    colors[i + 2] = 0.9 + Math.random() * 0.1;
+}
+
+const particlesGeo = new THREE.BufferGeometry();
+particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const particles = new THREE.Points(particlesGeo, new THREE.PointsMaterial({
+    size: 1.6,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.95,
+    blending: THREE.AdditiveBlending,
+    depthTest: false
+}));
+scene.add(particles);
+
+// ============== AUDIO REACTIVITY ==============
+let audioContext, analyser, audioElement, frequencyData = new Uint8Array(128), bassLevel = 0;
+
+const audioFileInput = document.getElementById('audioFile');
+const playBtn = document.getElementById('playBtn');
+const recordBtn = document.getElementById('recordBtn');
+
+audioFileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (audioElement) audioElement.pause();
+    
+    audioElement = new Audio(URL.createObjectURL(file));
+    audioElement.loop = true;
+    
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        frequencyData = new Uint8Array(analyser.frequencyBinCount);
+    }
+    
+    const source = audioContext.createMediaElementSource(audioElement);
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+    audioElement.play();
+});
+
+playBtn.addEventListener('click', () => {
+    if (audioElement) audioElement.paused ? audioElement.play() : audioElement.pause();
+});
+
+// Recording (same as before)
+let mediaRecorder, recordedChunks = [], isRecording = false;
+recordBtn.addEventListener('click', async () => {
+    if (!audioElement) { alert("Upload a hypertrance track first!"); return; }
+    
+    if (!isRecording) {
+        const stream = renderer.domElement.captureStream(60);
+        mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+        recordedChunks = [];
+        mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hypertrance-neon-rush.mp4';
+            a.click();
+        };
+        mediaRecorder.start();
+        isRecording = true;
+        recordBtn.textContent = "STOP RECORDING";
+        recordBtn.classList.add('recording');
+    } else {
+        mediaRecorder.stop();
+        isRecording = false;
+        recordBtn.textContent = "RECORD MP4";
+        recordBtn.classList.remove('recording');
+    }
+});
+
+// ============== ANIMATION - FAST & HYPER ==============
+let time = 0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    time += 0.022; // faster base speed
+
+    if (analyser) {
+        analyser.getByteFrequencyData(frequencyData);
+        let bass = 0;
+        for (let i = 0; i < 14; i++) bass += frequencyData[i];
+        bassLevel = Math.min(bass / (14 * 255), 1);
     }
 
-    const particles = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(positions, 3))
-                                 .setAttribute('color', new THREE.BufferAttribute(colors, 3)),
-        new THREE.PointsMaterial({ size: 1.2, vertexColors: true, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending })
-    );
-    scene.add(particles);
+    const pulse = 1 + bassLevel * 2.2;
 
-    // ============== AUDIO & RECORDING (same as last version) ==============
-    let audioContext, analyser, audioElement, bassLevel = 0;
-    let frequencyData = new Uint8Array(128);
-    let mediaRecorder, recordedChunks = [], isRecording = false;
-
-    const audioFileInput = document.getElementById('audioFile');
-    const playBtn = document.getElementById('playBtn');
-    const recordBtn = document.getElementById('recordBtn');
-
-    // Audio setup (same logic as before)
-    audioFileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        if (audioElement) audioElement.pause();
-        
-        audioElement = new Audio(URL.createObjectURL(file));
-        audioElement.loop = true;
-
-        if (!audioContext) {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            analyser = audioContext.createAnalyser();
-            analyser.fftSize = 256;
-            frequencyData = new Uint8Array(analyser.frequencyBinCount);
-        }
-
-        const source = audioContext.createMediaElementSource(audioElement);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
-        audioElement.play();
+    // Multiple knots spinning at different speeds
+    knots.forEach((obj, i) => {
+        obj.rotation.x = time * (0.6 + i * 0.2) + bassLevel * 3;
+        obj.rotation.y = time * (0.45 - i * 0.1);
+        if (i % 2 === 0) obj.scale.setScalar(pulse * (1 + Math.sin(time * 12) * 0.1));
     });
 
-    playBtn.addEventListener('click', () => {
-        if (audioElement) audioElement.paused ? audioElement.play() : audioElement.pause();
-    });
-
-    // Recording logic (same as previous)
-    recordBtn.addEventListener('click', async () => {
-        if (!audioElement) { alert("Upload a track first!"); return; }
-        // ... (keep the full recording code from previous version)
-        if (!isRecording) {
-            const stream = renderer.domElement.captureStream(60);
-            mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-            recordedChunks = [];
-            mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'hypertrance-visualizer.mp4';
-                a.click();
-            };
-            mediaRecorder.start();
-            isRecording = true;
-            recordBtn.textContent = "STOP RECORDING";
-            recordBtn.classList.add('recording');
-        } else {
-            mediaRecorder.stop();
-            isRecording = false;
-            recordBtn.textContent = "RECORD MP4";
-            recordBtn.classList.remove('recording');
-        }
-    });
-
-    // Animation loop (same)
-    let time = 0;
-    function animate() {
-        requestAnimationFrame(animate);
-        time += 0.016;
-
-        if (analyser) {
-            analyser.getByteFrequencyData(frequencyData);
-            let bassSum = 0;
-            for (let i = 0; i < 12; i++) bassSum += frequencyData[i];
-            bassLevel = bassSum / (12 * 255);
-        }
-
-        const pulse = 1 + bassLevel * 1.8;
-        knot.scale.setScalar(pulse);
-        knot.rotation.x = time * 0.35 + bassLevel * 2;
-        knot.rotation.y = time * 0.45;
-        wireKnot.scale.setScalar(pulse * 1.05);
-
-        const pos = particles.geometry.attributes.position.array;
-        for (let i = 1; i < pos.length; i += 3) {
-            pos[i] -= 2.2 + bassLevel * 6;
-            if (pos[i] < -120) pos[i] = 120;
-        }
-        particles.geometry.attributes.position.needsUpdate = true;
-        particles.rotation.y = time * 0.08;
-
-        pointLight.intensity = 3 + bassLevel * 12;
-        pointLight2.intensity = 3 + bassLevel * 10;
-
-        renderer.render(scene, camera);
+    // Hyper particle tunnel
+    const pos = particles.geometry.attributes.position.array;
+    for (let i = 1; i < pos.length; i += 3) {
+        pos[i] -= 3.8 + bassLevel * 9; // very fast forward rush
+        if (pos[i] < -140) pos[i] = 140;
     }
-    animate();
+    particles.geometry.attributes.position.needsUpdate = true;
+    particles.rotation.y = time * 0.12;
 
-    // Resize & Fullscreen
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+    // Aggressive lighting
+    neonPink.intensity = 4 + bassLevel * 18;
+    neonCyan.intensity = 4 + bassLevel * 15;
+    neonYellow.intensity = 2.5 + bassLevel * 12;
+    
+    neonPink.position.x = Math.sin(time * 4) * 20;
+    neonCyan.position.x = Math.cos(time * 3.5) * 20;
 
-    document.addEventListener('click', (e) => {
-        if (!['BUTTON','INPUT'].includes(e.target.tagName)) {
-            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-        }
-    });
-    </script>
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Fullscreen on click (non-controls)
+document.addEventListener('click', (e) => {
+    if (!['BUTTON','INPUT'].includes(e.target.tagName)) {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    }
+});
+</script>
 </body>
 </html>
